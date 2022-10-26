@@ -54,7 +54,7 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ Welcome {message.from_user.mention()}!</b>
+        f"""<b>✨ اهلا.وسهلا{message.from_user.mention()}!</b>
 
 **💭 [{BOT_NAME}](https://t.me/{GROUP_SUPPORT}) allows you to play music on groups through the new Telegram's voice chats!**
 
@@ -63,25 +63,25 @@ async def start_(client: Client, message: Message):
                         [ 
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "➕ اضفني لمجموعتك ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "⚙️ Command​​", callback_data="cbhelp"
+                        "⚙️ الاوامر​​", callback_data="cbhelp"
                     ),
                     InlineKeyboardButton(
-                        "❤️ Donate", url=f"https://t.me/{OWNER_NAME}")
+                        "❤️ المطور", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
-                        "👥 Official Group​​", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥مساعدة ​​", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📮 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
+                        "📮 القناة الرسمية", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "🛠️ Source Code 🛠️", url=f"{UPSTREAM_REPO}")
+                        "🛠️ السورس 🛠️", url=f"{UPSTREAM_REPO}")
                 ],[
                     InlineKeyboardButton(
-                        "❔ About me​​", callback_data="cbabout"
+                        "❔ معلومات عني", callback_data="cbabout"
                     )
                 ]
             ]
@@ -98,16 +98,16 @@ async def start(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     delta_ping = time() - start
     await message.reply_text(
-        f"""<b>👋 **Hello {message.from_user.mention()}** ❗</b>
+        f"""<b>👋 **مرحبا {message.from_user.mention()}** ❗</b>
 
-✅ **I'm active and ready to play music!
-• Start time: `{START_TIME_ISO}`
+✅ **أنا نشط ومستعد لتشغيل الموسيقى !
+• وقت البدء: `{START_TIME_ISO}`
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Group support", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "للمساعدة", url=f"https://t.me/{GROUP_SUPPORT}"
                     )
                 ]
             ]
@@ -118,16 +118,16 @@ async def start(client: Client, message: Message):
 @Client.on_message(command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def help(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>👋 **Hello** {message.from_user.mention()}</b>
+        f"""<b>👋 **مرحباا** {message.from_user.mention()}</b>
 
-**Please press the button below to read the explanation and see the list of available commands !**
+**يرجى الضغط على الزر أدناه لقراءة الشرح والاطلاع على قائمة الأوامر المتاحة !**
 
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text=" Hoe to use me ❔", url=f"https://t.me/{BOT_USERNAME}"
+                        text="كيفية أستخدامي", url=f"https://t.me/{BOT_USERNAME}"
                     )
                 ]
             ]
@@ -146,8 +146,8 @@ async def ping_pong(client: Client, message: Message):
     delta_ping = time() - start
     await m_reply.edit_text(
         "**Pong !!**\n" 
-        f"**Time taken:** `{delta_ping * 1000:.3f} ms`\n"
-        f"**Service uptime:** `{uptime}`"
+        f"**وقت الأستخدام:** `{delta_ping * 1000:.3f} ms`\n"
+        f"**وقت الخادم:** `{uptime}`"
     )
 
 
