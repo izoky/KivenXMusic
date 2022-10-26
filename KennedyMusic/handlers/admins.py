@@ -41,7 +41,7 @@ async def update_admin(client, message):
     admins[message.chat.id] = new_admins
     await client.send_message(
         message.chat.id,
-        "✅ Bot **reloaded correctly !**\n\n• The **Admin list** has been **updated !**"
+        "✅ البوت **تم تحديثه بنجاح !**\n\n• ⚙️ **** تم بنجاح **التحديث !**"
     )
 
 
@@ -53,12 +53,12 @@ async def pause(_, message: Message):
     for x in callsmusic.pytgcalls.active_calls:
         ACTV_CALLS(int(x.chat_id))
     if int(chat_id) not in ACTV_CALLS:
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("❌ **لا توجد موسيقى**")
     else:
         await callsmusic.pytgcalls.pause_stream(chat_id)
         await _.send_message(
             message.chat.id,
-            "⏸ **Track paused.**\n\n• **To resume the playback, use the**\n» /resume command."
+            "⏸ **تم ايقاف المسار مؤقتاً **\n\n• **قم باستخدام هذا الأمر للتشغيل**\n» /resume الأمر."
         )
 
 
@@ -70,12 +70,12 @@ async def resume(_, message: Message):
     for x in callsmusic.pytgcalls.active_calls:
         ACTV_CALLS.append(int(x.chat_id))
     if int(chat_id) not in ACTV_CALLS:
-        await message.reply_text("❌ **no music is paused**")
+        await message.reply_text("❌ **ًلا توجد موسيقى متوقفة مؤقتا **")
     else:
         await callsmusic.pytgcalls.resume_stream(chat_id)
         await _.send_message(
             message.chat.id,
-            "▶️ **Track resumed.**\n\n• **To pause the playback, use the**\n» /pause command."
+            "▶️ **\n*تم استئناف المسار.**\n• **لإيقاف التشغيل مؤقتا، استخدم الأمر **\n» /pause."
         )
 
 
@@ -87,7 +87,7 @@ async def stop(_, message: Message):
     for x in callsmusic.pytgcalls.active_calls:
         ACTV_CALLS.append(int(x.chat_id))
     if int(chat_id) not in ACTV_CALLS:
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("❌ **لا توجد موسيقى للأنهاء**")
     else:
         try:
             queues.clear(chat_id)
@@ -109,7 +109,7 @@ async def skip(_, message: Message):
     for x in callsmusic.pytgcalls.active_calls:
         ACTV_CALLS.append(int(x.chat_id))
     if int(chat_id) not in ACTV_CALLS:
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("❌ **لا توجد موسيقى  جارية**")
     else:
         queues.task_done(chat_id)
         
@@ -195,13 +195,13 @@ async def delcmdc(_, message: Message):
         )
 
 
-@Client.on_message(command(["volume", f"volume@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["vol", f"volume@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
 async def change_volume(client, message):
     range = message.command[1]
     chat_id = message.chat.id
     try:
        await callsmusic.pytgcalls.change_volume_call(chat_id, volume=int(range))
-       await message.reply(f"🔊 **volume set to:** ```{range}%```")
+       await message.reply(f"🔊 **ضبط مستوى الصوت على:** ```{range}%```")
     except Exception as e:
-       await message.reply(f"**error:** {e}")
+       await message.reply(f"**حدث خطأ:** {e}")
