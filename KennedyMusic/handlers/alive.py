@@ -67,17 +67,17 @@ async def alive(client, message):
     uptime = await _human_time_duration(int(uptime_sec))
     await client.send_photo(message.chat.id,
         photo=f"{BOT_IMG}",
-        caption=f"""**{alv} Holla {message.from_user.mention()}, I'm {bn}.**
+        caption=f"""**{alv} هلا عمري {message.from_user.mention()}, انا {bn}.**
 
-{alv} **I'm Working Properly**
+{alv} **انا أعمل**
 
-{alv} **Bot : 6.0 LATEST**
+{alv} **اصدار البوت : 6.0**
 
-{alv} **My Master : [{OWNER_NAME}](https://t.me/{OWNER_NAME})**
+{alv} ** مطوري : [{OWNER_NAME}](https://t.me/{OWNER_NAME})**
 
-{alv} **Service Uptime : `{uptime}`**
+{alv} **عمل الخادم : `{uptime}`**
 
-**Thanks For Using Me ❤️**""",
+**شكرا على أستخدام بوت كيڤن  ❤️**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
